@@ -11,7 +11,7 @@ const router = Router();
 
 router.get('/tasks', getAllTasks);
 
-router.get('/tasks/10', getOneTask);
+router.get('/tasks/:id', getOneTask);
 
 router.post('/tasks', createTask);
 

@@ -2,11 +2,21 @@ import db from '../database';
 import { response, request } from 'express';
 
 export const getAllTasks = async (req = request, res = response) => {
+  try {
+    const result = await db.query('SELECT * FROM task');
+    res.json(result.rows);
+
+    //
+  } catch (error) {
+    console.error(error.message);
+    res.json({ error: error.message });
+  }
+
   res.send('retrieving a list task');
 };
 
 export const getOneTask = async (req = request, res = response) => {
-  res.send('retrieving a single task');
+  console.log(req.params.id);
 };
 
 export const createTask = async (req = request, res = response) => {
